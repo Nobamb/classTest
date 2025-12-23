@@ -103,7 +103,7 @@ class Monster {
   // 메서드: takeDamage(damage)
   // 이 메서드는 데미지를 받으면 자신의 hp를 깎고, "[몬스터이름]이 [데미지] 피해를 입었습니다. (남은 체력: [hp])"를 출력합니다.
   takeDamage(damage) {
-    hp -= damage;
+    this.hp -= damage;
     console.log(
       `${this.name}이 ${damage} 피해를 입었습니다. (남은 체력 : [${this.hp}])`
     );
@@ -115,6 +115,8 @@ const monster = new Monster("몬스터", 100)
 
 // 테스트 
 console.log(monster)
+// 몬스터 takedamage 실행
+monster.takeDamage(10)
 
 // Q7. [실전 전투] 용사가 몬스터를 때리다
 // 이제 Hero (또는 Warrior) 클래스의 attack(target) 메서드를 수정하세요.
