@@ -36,9 +36,7 @@ class Hero {
   // Hero 클래스에 기본적으로 attack() 메서드를 만드세요 (데미지 10).
   // attack() 테스트(10의 데미지를 주라고 console.log만 시킴)
   attack() {
-
-    console.log("10의 데미지를 주었습니다.")
-
+    console.log("10의 데미지를 주었습니다.");
   }
 }
 
@@ -65,22 +63,18 @@ class Warrior extends Hero {
     super(name, hp);
     this.energy = energy;
   }
-  
+
   // 그리고 Warrior 클래스에서 이 attack()을 재정의(Override) 하세요.
   // 전사는 공격할 때 기력(energy)을 10 소모하고, 데미지를 20 입힙니다.
   // 만약 기력이 부족하면 "기력이 부족합니다!"를 출력하고 공격하지 못합니다.
-  attack(){
-
-    if(this.energy < 10){
-      console.log("기력이 부족합니다!")
-      return
+  attack() {
+    if (this.energy < 10) {
+      console.log("기력이 부족합니다!");
+      return;
     }
-    this.energy -= 10
-    console.log("공격! 20의 데미지!")
-
+    this.energy -= 10;
+    console.log("공격! 20의 데미지!");
   }
-
-
 }
 
 // warrior 생성
@@ -99,18 +93,22 @@ warrior.attack();
 // Q6. [몬스터 출현] Monster 클래스 만들기
 // 샌드백이 필요합니다. Monster 클래스를 만드세요.
 // 속성: name (이름), hp (체력)
-// 메서드: takeDamage(damage)
-// 이 메서드는 데미지를 받으면 자신의 hp를 깎고, "[몬스터이름]이 [데미지] 피해를 입었습니다. (남은 체력: [hp])"를 출력합니다.
 
-class Monster{
-
-  constructor(name, hp){
+class Monster {
+  constructor(name, hp) {
     this.name = name;
     this.hp = hp;
   }
 
+  // 메서드: takeDamage(damage)
+  // 이 메서드는 데미지를 받으면 자신의 hp를 깎고, "[몬스터이름]이 [데미지] 피해를 입었습니다. (남은 체력: [hp])"를 출력합니다.
+  takeDamage(damage) {
+    hp -= damage;
+    console.log(
+      `${this.name}이 ${damage} 피해를 입었습니다. (남은 체력 : [${this.hp}])`
+    );
+  }
 }
-
 
 // Q7. [실전 전투] 용사가 몬스터를 때리다
 // 이제 Hero (또는 Warrior) 클래스의 attack(target) 메서드를 수정하세요.
