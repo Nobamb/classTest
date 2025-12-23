@@ -55,20 +55,23 @@ class Hero {
   // 누군가 hero.hp = -50을 시도했을 때, 실제로는 0이 저장되어야 합니다.
 
   // getter 메서드 생성(hp 반환)
+  // _를 붙이는 이유 = 자기 자신을 무한반복하기 때문
+  // this.hp = get hp()
+  // 그렇기에 _를 붙여 클래스에 잇는 hp라고 명시하기 위함
   get hp(){
-    return this.hp
+    return this._hp
   }
 
   // setter 메서드 생성(value값을 hp에 저장)
   set hp(value){
-    // 만약에 hp가 0 미만일 때, this.hp는 0을 저장하고 
+    // 만약에 hp가 0 이하일 때, this.hp는 0을 저장하고 
     // 사망했습니다..를 출력
-    if(hp < 0){
-      this.hp = 0;
+    if(value <= 0){
+      this._hp = 0;
       console.log("사망했습니다...")
       return;  
     }
-    this.hp = value
+    this._hp = value
   }
 }
 
@@ -152,9 +155,17 @@ warrior.attack(monster);
 warrior.attack(monster);
 
 
+// hp getter setter 테스트
+hero.hp = 30;
+console.log(hero.hp);
 
+// 0 일 때 사망 테스트
+hero.hp = 0;
+console.log(hero.hp)
 
-
+// 음수일때 hp 0 보존 테스트
+hero.hp = -30;
+console.log(hero.hp)
 
 
 
