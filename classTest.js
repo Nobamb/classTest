@@ -54,6 +54,18 @@ hero.heal(30)
 // extends 키워드를 사용하세요.
 // Warrior는 생성될 때 energy(기력)라는 추가 속성을 가집니다. (기본값 100)
 // 힌트: 자식 클래스 생성자에서 부모의 생성자를 부를 땐 super()를 써야 합니다.
+
+class Warrior extends Hero{
+
+  constructor(name, hp, energy){
+    super(name, hp)
+    this.energy = energy
+  }
+
+}
+
+
+
 // Q5. [스킬 연마] 공격(attack) 메서드 오버라이딩
 // Hero 클래스에 기본적으로 attack() 메서드를 만드세요 (데미지 10).
 // 그리고 Warrior 클래스에서 이 attack()을 재정의(Override) 하세요.
