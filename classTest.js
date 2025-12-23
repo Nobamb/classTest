@@ -101,6 +101,17 @@ warrior.attack();
 // 속성: name (이름), hp (체력)
 // 메서드: takeDamage(damage)
 // 이 메서드는 데미지를 받으면 자신의 hp를 깎고, "[몬스터이름]이 [데미지] 피해를 입었습니다. (남은 체력: [hp])"를 출력합니다.
+
+class Monster{
+
+  constructor(name, hp){
+    this.name = name;
+    this.hp = hp;
+  }
+
+}
+
+
 // Q7. [실전 전투] 용사가 몬스터를 때리다
 // 이제 Hero (또는 Warrior) 클래스의 attack(target) 메서드를 수정하세요.
 // 파라미터로 Monster 객체(target)를 받습니다.
