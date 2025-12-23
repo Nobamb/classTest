@@ -113,6 +113,9 @@ class Monster {
 // monster 생성 이름 몬스터 hp 100
 const monster = new Monster("몬스터", 100)
 
+// 테스트 
+console.log(monster)
+
 // Q7. [실전 전투] 용사가 몬스터를 때리다
 // 이제 Hero (또는 Warrior) 클래스의 attack(target) 메서드를 수정하세요.
 // 파라미터로 Monster 객체(target)를 받습니다.
