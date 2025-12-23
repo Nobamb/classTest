@@ -16,26 +16,26 @@ class Hero {
   // Hero 클래스 안에 hello()라는 메서드(함수)를 만드세요.
   // 이 메서드를 실행하면 콘솔에 "나는 [이름]이다! 체력은 [hp] 남았다!"라고 출력하게 하세요.
   // 힌트: 클래스 내부의 내 정보(변수)를 쓸 땐 this 키워드가 필수입니다!
-  
+
   hello() {
     console.log(`나는 ${this.name}이다! 체력은 [${this.hp}] 남았다!`);
   }
-  
+
   // Q3. [회복 마법] 체력 회복하기
   // 용사가 다쳤을 때를 대비해야 합니다.
   // heal(amount) 메서드를 추가하세요.
   // 파라미터로 받은 amount만큼 hp가 증가해야 합니다.
   // 단, 최대 체력 제한은 없다고 칩니다. "체력이 30 회복되어 [현재 체력]이 되었습니다"를 출력하세요.
-  
+
   heal(amount) {
     this.hp += amount;
     console.log(`체력이 ${amount} 회복되어 [${this.hp}]이 되었습니다`);
   }
-  
+
   // Q5. [스킬 연마] 공격(attack) 메서드 오버라이딩
   // Hero 클래스에 기본적으로 attack() 메서드를 만드세요 (데미지 10).
   // attack() 테스트(10의 데미지를 주라고 console.log만 시킴)
-  
+
   // Q7. [실전 전투] 용사가 몬스터를 때리다
   // 이제 Hero (또는 Warrior) 클래스의 attack(target) 메서드를 수정하세요.
   // 파라미터로 Monster 객체(target)를 받습니다.
@@ -43,9 +43,10 @@ class Hero {
   // 미션: 전사 "아서스"가 몬스터 "슬라임"을 공격해서 슬라임의 체력이 줄어드는지 확인하세요.
   attack(target) {
     console.log("10의 데미지를 주었습니다.");
-    target.takeDamage(10)
+    target.takeDamage(10);
+    this.#ultimateGauge += 1;
+    // 공격할 때마다 게이지가 1씩 오르고,
   }
-
 
   // 🛡️ Chapter 4. 캡슐화와 고급 기능 (마스터 과정)
   // Q8. [안전장치] Getter와 Setter
@@ -58,20 +59,29 @@ class Hero {
   // _를 붙이는 이유 = 자기 자신을 무한반복하기 때문
   // this.hp = get hp()
   // 그렇기에 _를 붙여 클래스에 잇는 hp라고 명시하기 위함
-  get hp(){
-    return this._hp
+  get hp() {
+    return this._hp;
   }
 
   // setter 메서드 생성(value값을 hp에 저장)
-  set hp(value){
-    // 만약에 hp가 0 이하일 때, this.hp는 0을 저장하고 
+  set hp(value) {
+    // 만약에 hp가 0 이하일 때, this.hp는 0을 저장하고
     // 사망했습니다..를 출력
-    if(value <= 0){
+    if (value <= 0) {
       this._hp = 0;
-      console.log("사망했습니다...")
-      return;  
+      console.log("사망했습니다...");
+      return;
     }
-    this._hp = value
+    this._hp = value;
+  }
+  // Q9. [비밀의 힘] Private Field (#)
+  // 용사에게 남들에게 보여주고 싶지 않은 ultimateGauge(궁극기 게이지)가 있습니다.
+  // Hero 클래스에 #ultimateGauge라는 Private Field를 만드세요. (클래스 밖에서 hero.#ultimateGauge로 접근하면 에러가 나야 합니다.)
+  #ultimateGauge = 0;
+
+  //  게이지가 값을 출력하는 메서드를 통해서만 확인할 수 있게 하세요.
+  ultimateGaugeCheck() {
+    return console.log(`현재게이지 ${this.#ultimateGauge}`);
   }
 }
 
@@ -109,7 +119,7 @@ class Warrior extends Hero {
     }
     this.energy -= 10;
     console.log("공격! 20의 데미지!");
-    target.takeDamage(20)
+    target.takeDamage(20);
   }
 }
 
@@ -130,7 +140,7 @@ class Monster {
     this.name = name;
     this.hp = hp;
   }
-  
+
   // 메서드: takeDamage(damage)
   // 이 메서드는 데미지를 받으면 자신의 hp를 깎고, "[몬스터이름]이 [데미지] 피해를 입었습니다. (남은 체력: [hp])"를 출력합니다.
   takeDamage(damage) {
@@ -142,18 +152,15 @@ class Monster {
 }
 
 // monster 생성 이름 몬스터 hp 100
-const monster = new Monster("몬스터", 100)
+const monster = new Monster("몬스터", 100);
 
-// 테스트 
-console.log(monster)
+// 테스트
+console.log(monster);
 
-// hero 공격 테스트
-hero.attack(monster);
 // warrior 공격 테스트
 warrior.attack(monster);
 // warrior 에너지 고갈 확인 테스트
 warrior.attack(monster);
-
 
 // hp getter setter 테스트
 hero.hp = 30;
@@ -161,21 +168,21 @@ console.log(hero.hp);
 
 // 0 일 때 사망 테스트
 hero.hp = 0;
-console.log(hero.hp)
+console.log(hero.hp);
 
 // 음수일때 hp 0 보존 테스트
 hero.hp = -30;
-console.log(hero.hp)
+console.log(hero.hp);
+
+// hero 공격 테스트
+hero.attack(monster);
+hero.attack(monster);
+// 궁극기 확인 테스트
+hero.ultimateGaugeCheck();
+// 오류 테스트
+// hero.#ultimateGauge
 
 
-
-
-
-
-// Q9. [비밀의 힘] Private Field (#)
-// 용사에게 남들에게 보여주고 싶지 않은 ultimateGauge(궁극기 게이지)가 있습니다.
-// Hero 클래스에 #ultimateGauge라는 Private Field를 만드세요. (클래스 밖에서 hero.#ultimateGauge로 접근하면 에러가 나야 합니다.)
-// 공격할 때마다 게이지가 1씩 오르고, 게이지가 값을 출력하는 메서드를 통해서만 확인할 수 있게 하세요.
 // Q10. [길드 시스템] Static 메서드와 파티 관리
 // 마지막 문제입니다. 하드하게 가봅시다.
 // Hero 클래스 안에 static 메서드로 compare(hero1, hero2)를 만드세요.
