@@ -4,6 +4,15 @@
 // Hero라는 이름의 클래스를 만드세요.
 // 생성자(constructor)를 통해 name(이름)과 hp(체력)를 받아서 저장하세요.
 // new 키워드로 체력 100인 용사 "코딩왕"을 생성하고 콘솔에 출력해 보세요.
+
+class Hero {
+  constructor(name, hp) {
+    this.name = name;
+    this.hp = hp;
+  }
+}
+
+
 // Q2. [행동 개시] 인사하기 기능 추가
 // 용사가 가만히 있으면 안 되죠.
 // Hero 클래스 안에 hello()라는 메서드(함수)를 만드세요.
@@ -54,4 +63,3 @@
 // Hero 클래스 안에 static 메서드로 compare(hero1, hero2)를 만드세요.
 // 두 명의 용사 객체를 받아서, 누가 더 hp가 많은지 비교하여 승자의 이름을 리턴하는 심판 기능을 구현하세요.
 // 사용 예: Hero.compare(전사1, 전사2)
-
