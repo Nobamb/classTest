@@ -16,27 +16,34 @@ class Hero {
   // Hero 클래스 안에 hello()라는 메서드(함수)를 만드세요.
   // 이 메서드를 실행하면 콘솔에 "나는 [이름]이다! 체력은 [hp] 남았다!"라고 출력하게 하세요.
   // 힌트: 클래스 내부의 내 정보(변수)를 쓸 땐 this 키워드가 필수입니다!
-
+  
   hello() {
     console.log(`나는 ${this.name}이다! 체력은 [${this.hp}] 남았다!`);
   }
-
+  
   // Q3. [회복 마법] 체력 회복하기
   // 용사가 다쳤을 때를 대비해야 합니다.
   // heal(amount) 메서드를 추가하세요.
   // 파라미터로 받은 amount만큼 hp가 증가해야 합니다.
   // 단, 최대 체력 제한은 없다고 칩니다. "체력이 30 회복되어 [현재 체력]이 되었습니다"를 출력하세요.
-
+  
   heal(amount) {
     this.hp += amount;
     console.log(`체력이 ${amount} 회복되어 [${this.hp}]이 되었습니다`);
   }
-
+  
   // Q5. [스킬 연마] 공격(attack) 메서드 오버라이딩
   // Hero 클래스에 기본적으로 attack() 메서드를 만드세요 (데미지 10).
   // attack() 테스트(10의 데미지를 주라고 console.log만 시킴)
-  attack() {
+  
+  // Q7. [실전 전투] 용사가 몬스터를 때리다
+  // 이제 Hero (또는 Warrior) 클래스의 attack(target) 메서드를 수정하세요.
+  // 파라미터로 Monster 객체(target)를 받습니다.
+  // 공격 시 target.takeDamage(데미지)를 호출해서 몬스터의 체력을 실제로 깎아야 합니다.
+  // 미션: 전사 "아서스"가 몬스터 "슬라임"을 공격해서 슬라임의 체력이 줄어드는지 확인하세요.
+  attack(target) {
     console.log("10의 데미지를 주었습니다.");
+    target.takeDamage(10)
   }
 }
 
@@ -67,13 +74,14 @@ class Warrior extends Hero {
   // 그리고 Warrior 클래스에서 이 attack()을 재정의(Override) 하세요.
   // 전사는 공격할 때 기력(energy)을 10 소모하고, 데미지를 20 입힙니다.
   // 만약 기력이 부족하면 "기력이 부족합니다!"를 출력하고 공격하지 못합니다.
-  attack() {
+  attack(target) {
     if (this.energy < 10) {
       console.log("기력이 부족합니다!");
       return;
     }
     this.energy -= 10;
     console.log("공격! 20의 데미지!");
+    target.takeDamage(20)
   }
 }
 
@@ -118,11 +126,7 @@ console.log(monster)
 // 몬스터 takedamage 실행
 monster.takeDamage(10)
 
-// Q7. [실전 전투] 용사가 몬스터를 때리다
-// 이제 Hero (또는 Warrior) 클래스의 attack(target) 메서드를 수정하세요.
-// 파라미터로 Monster 객체(target)를 받습니다.
-// 공격 시 target.takeDamage(데미지)를 호출해서 몬스터의 체력을 실제로 깎아야 합니다.
-// 미션: 전사 "아서스"가 몬스터 "슬라임"을 공격해서 슬라임의 체력이 줄어드는지 확인하세요.
+
 
 // 🛡️ Chapter 4. 캡슐화와 고급 기능 (마스터 과정)
 // Q8. [안전장치] Getter와 Setter
