@@ -10,43 +10,48 @@ class Hero {
     this.name = name;
     this.hp = hp;
   }
-  
+
   // Q2. [행동 개시] 인사하기 기능 추가
   // 용사가 가만히 있으면 안 되죠.
   // Hero 클래스 안에 hello()라는 메서드(함수)를 만드세요.
   // 이 메서드를 실행하면 콘솔에 "나는 [이름]이다! 체력은 [hp] 남았다!"라고 출력하게 하세요.
   // 힌트: 클래스 내부의 내 정보(변수)를 쓸 땐 this 키워드가 필수입니다!
-  
-  hello(){
-    console.log(`나는 ${this.name}이다! 체력은 [${this.hp}] 남았다!`)
+
+  hello() {
+    console.log(`나는 ${this.name}이다! 체력은 [${this.hp}] 남았다!`);
   }
-  
+
   // Q3. [회복 마법] 체력 회복하기
   // 용사가 다쳤을 때를 대비해야 합니다.
   // heal(amount) 메서드를 추가하세요.
   // 파라미터로 받은 amount만큼 hp가 증가해야 합니다.
   // 단, 최대 체력 제한은 없다고 칩니다. "체력이 30 회복되어 [현재 체력]이 되었습니다"를 출력하세요.
 
-
-  heal(amount){
+  heal(amount) {
     this.hp += amount;
-    console.log(`체력이 ${amount} 회복되어 [${this.hp}]이 되었습니다`)
+    console.log(`체력이 ${amount} 회복되어 [${this.hp}]이 되었습니다`);
   }
 
+  // Q5. [스킬 연마] 공격(attack) 메서드 오버라이딩
+  // Hero 클래스에 기본적으로 attack() 메서드를 만드세요 (데미지 10).
+  // attack() 테스트(10의 데미지를 주라고 console.log만 시킴)
+  attack() {
 
+    console.log("10의 데미지를 주었습니다.")
+
+  }
 }
 
-const hero = new Hero("코딩왕",100)
+const hero = new Hero("코딩왕", 100);
 
 // hello 메서드 동작 테스트
-hero.hello()
-
+hero.hello();
 
 // console.log(hero)
 
-// heal 테스트 
+// heal 테스트
 
-hero.heal(30)
+hero.heal(30);
 
 // ⚔️ Chapter 2. 상속과 다형성 (직업 선택)
 // Q4. [전직] 전사(Warrior) 클래스 (상속의 시작)
@@ -55,28 +60,25 @@ hero.heal(30)
 // Warrior는 생성될 때 energy(기력)라는 추가 속성을 가집니다. (기본값 100)
 // 힌트: 자식 클래스 생성자에서 부모의 생성자를 부를 땐 super()를 써야 합니다.
 
-class Warrior extends Hero{
-
-  constructor(name, hp, energy){
-    super(name, hp)
-    this.energy = energy
+class Warrior extends Hero {
+  constructor(name, hp, energy) {
+    super(name, hp);
+    this.energy = energy;
   }
+  
+  // 그리고 Warrior 클래스에서 이 attack()을 재정의(Override) 하세요.
+  // 전사는 공격할 때 기력(energy)을 10 소모하고, 데미지를 20 입힙니다.
+  // 만약 기력이 부족하면 "기력이 부족합니다!"를 출력하고 공격하지 못합니다.
+
 
 }
 
 // warrior 생성
 // 이름 워리어 hp 100 에너지 10
-const warrior = new Warrior("워리어",100,10)
+const warrior = new Warrior("워리어", 100, 10);
 
 // warrior 생성확인 테스트
-console.log(warrior)
-
-
-// Q5. [스킬 연마] 공격(attack) 메서드 오버라이딩
-// Hero 클래스에 기본적으로 attack() 메서드를 만드세요 (데미지 10).
-// 그리고 Warrior 클래스에서 이 attack()을 재정의(Override) 하세요.
-// 전사는 공격할 때 기력(energy)을 10 소모하고, 데미지를 20 입힙니다.
-// 만약 기력이 부족하면 "기력이 부족합니다!"를 출력하고 공격하지 못합니다.
+console.log(warrior);
 
 // 👹 Chapter 3. 상호작용 (실전 전투)
 // Q6. [몬스터 출현] Monster 클래스 만들기
