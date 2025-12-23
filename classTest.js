@@ -44,6 +44,9 @@ hero.hello()
 
 // console.log(hero)
 
+// heal 테스트 
+
+hero.heal(30)
 
 // ⚔️ Chapter 2. 상속과 다형성 (직업 선택)
 // Q4. [전직] 전사(Warrior) 클래스 (상속의 시작)
