@@ -85,10 +85,15 @@ class Warrior extends Hero {
 
 // warrior 생성
 // 이름 워리어 hp 100 에너지 10
-const warrior = new Warrior("워리어", 100, 10);
+const warrior = new Warrior("워리어", 100, 19);
 
 // warrior 생성확인 테스트
 console.log(warrior);
+
+// 공격 테스트
+warrior.attack();
+// 에너지 고갈 확인 테스트
+warrior.attack();
 
 // 👹 Chapter 3. 상호작용 (실전 전투)
 // Q6. [몬스터 출현] Monster 클래스 만들기
