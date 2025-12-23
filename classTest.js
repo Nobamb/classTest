@@ -69,6 +69,16 @@ class Warrior extends Hero {
   // 그리고 Warrior 클래스에서 이 attack()을 재정의(Override) 하세요.
   // 전사는 공격할 때 기력(energy)을 10 소모하고, 데미지를 20 입힙니다.
   // 만약 기력이 부족하면 "기력이 부족합니다!"를 출력하고 공격하지 못합니다.
+  attack(){
+
+    if(this.energy < 10){
+      console.log("기력이 부족합니다!")
+      return
+    }
+    this.energy -= 10
+    console.log("공격! 20의 데미지!")
+
+  }
 
 
 }
