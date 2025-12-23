@@ -64,6 +64,12 @@ class Warrior extends Hero{
 
 }
 
+// warrior 생성
+// 이름 워리어 hp 100 에너지 10
+const warrior = new Warrior("워리어",100,10)
+
+// warrior 생성확인 테스트
+console.log(warrior)
 
 
 // Q5. [스킬 연마] 공격(attack) 메서드 오버라이딩
