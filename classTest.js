@@ -26,6 +26,10 @@ class Hero {
 
 const hero = new Hero("코딩왕",100)
 
+// hello 메서드 동작 테스트
+hero.hello()
+
+
 // console.log(hero)
 
 // Q3. [회복 마법] 체력 회복하기
