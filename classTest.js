@@ -12,6 +12,10 @@ class Hero {
   }
 }
 
+const hero = new Hero("코딩왕",100)
+
+console.log(hero)
+
 
 // Q2. [행동 개시] 인사하기 기능 추가
 // 용사가 가만히 있으면 안 되죠.
