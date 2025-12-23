@@ -45,6 +45,31 @@ class Hero {
     console.log("10의 데미지를 주었습니다.");
     target.takeDamage(10)
   }
+
+
+  // 🛡️ Chapter 4. 캡슐화와 고급 기능 (마스터 과정)
+  // Q8. [안전장치] Getter와 Setter
+  // hp가 0보다 작아지면 안 됩니다. (죽은 거니까요)
+  // Hero 클래스의 hp를 직접 수정하는 것을 막고 싶지만, 일단은 set hp(value)를 만들어봅시다.
+  // 만약 value가 0보다 작으면 0으로 저장하고 "사망했습니다..."를 출력하게 하세요.
+  // 누군가 hero.hp = -50을 시도했을 때, 실제로는 0이 저장되어야 합니다.
+
+  // getter 메서드 생성(hp 반환)
+  get hp(){
+    return this.hp
+  }
+
+  // setter 메서드 생성(value값을 hp에 저장)
+  set hp(value){
+    // 만약에 hp가 0 미만일 때, this.hp는 0을 저장하고 
+    // 사망했습니다..를 출력
+    if(hp < 0){
+      this.hp = 0;
+      console.log("사망했습니다...")
+      return;  
+    }
+    this.hp = value
+  }
 }
 
 const hero = new Hero("코딩왕", 100);
@@ -126,12 +151,16 @@ warrior.attack(monster);
 // warrior 에너지 고갈 확인 테스트
 warrior.attack(monster);
 
-// 🛡️ Chapter 4. 캡슐화와 고급 기능 (마스터 과정)
-// Q8. [안전장치] Getter와 Setter
-// hp가 0보다 작아지면 안 됩니다. (죽은 거니까요)
-// Hero 클래스의 hp를 직접 수정하는 것을 막고 싶지만, 일단은 set hp(value)를 만들어봅시다.
-// 만약 value가 0보다 작으면 0으로 저장하고 "사망했습니다..."를 출력하게 하세요.
-// 누군가 hero.hp = -50을 시도했을 때, 실제로는 0이 저장되어야 합니다.
+
+
+
+
+
+
+
+
+
+
 // Q9. [비밀의 힘] Private Field (#)
 // 용사에게 남들에게 보여주고 싶지 않은 ultimateGauge(궁극기 게이지)가 있습니다.
 // Hero 클래스에 #ultimateGauge라는 Private Field를 만드세요. (클래스 밖에서 hero.#ultimateGauge로 접근하면 에러가 나야 합니다.)
