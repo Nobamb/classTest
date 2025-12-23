@@ -87,29 +87,34 @@ class Hero {
   // 마지막 문제입니다. 하드하게 가봅시다.
   // Hero 클래스 안에 static 메서드로 compare(hero1, hero2)를 만드세요.
   // 두 명의 용사 객체를 받아서, 누가 더 hp가 많은지 비교하여 승자의 이름을 리턴하는 심판 기능을 구현하세요.
-  // 사용 예: Hero.compare(전사1, 전사2)
   static compare(hero1, hero2){
+    console.log(hero1.hp)
+    console.log(hero2.hp)
     if (hero1.hp > hero2.hp){
-      return console.log(`승자는 ${hero1}!`)
+      return console.log(`승자는 ${hero1.name}!`)
+    }
+    else if(hero1.hp === hero2.hp){
+      return console.log(`무승부!`)
     }
     else{
-
-      return console.log(`승자는 ${hero2}!`)
-
+      
+      return console.log(`승자는 ${hero2.name}!`)
+      
     }
   }
 }
 
-const hero = new Hero("코딩왕", 100);
+// hero1로 지정
+const hero1 = new Hero("코딩왕", 100);
 
 // hello 메서드 동작 테스트
-hero.hello();
+hero1.hello();
 
 // console.log(hero)
 
 // heal 테스트
 
-hero.heal(30);
+hero1.heal(30);
 
 // ⚔️ Chapter 2. 상속과 다형성 (직업 선택)
 // Q4. [전직] 전사(Warrior) 클래스 (상속의 시작)
@@ -123,7 +128,7 @@ class Warrior extends Hero {
     super(name, hp);
     this.energy = energy;
   }
-
+  
   // 그리고 Warrior 클래스에서 이 attack()을 재정의(Override) 하세요.
   // 전사는 공격할 때 기력(energy)을 10 소모하고, 데미지를 20 입힙니다.
   // 만약 기력이 부족하면 "기력이 부족합니다!"를 출력하고 공격하지 못합니다.
@@ -155,7 +160,7 @@ class Monster {
     this.name = name;
     this.hp = hp;
   }
-
+  
   // 메서드: takeDamage(damage)
   // 이 메서드는 데미지를 받으면 자신의 hp를 깎고, "[몬스터이름]이 [데미지] 피해를 입었습니다. (남은 체력: [hp])"를 출력합니다.
   takeDamage(damage) {
@@ -178,23 +183,35 @@ warrior.attack(monster);
 warrior.attack(monster);
 
 // hp getter setter 테스트
-hero.hp = 30;
-console.log(hero.hp);
+hero1.hp = 30;
+console.log(hero1.hp);
 
-// 0 일 때 사망 테스트
-hero.hp = 0;
-console.log(hero.hp);
+// // 0 일 때 사망 테스트
+// hero1.hp = 0;
+// console.log(hero1.hp);
 
-// 음수일때 hp 0 보존 테스트
-hero.hp = -30;
-console.log(hero.hp);
+// // 음수일때 hp 0 보존 테스트
+// hero1.hp = -30;
+// console.log(hero1.hp);
 
 // hero 공격 테스트
-hero.attack(monster);
-hero.attack(monster);
+hero1.attack(monster);
+hero1.attack(monster);
 // 궁극기 확인 테스트
-hero.ultimateGaugeCheck();
+hero1.ultimateGaugeCheck();
 // 오류 테스트
 // hero.#ultimateGauge
 
 
+
+
+// hero2 생성(static compare 확인용)
+// 한 코드는 체력 1000000
+const hero2 = new Hero("코딩킹",1000000)
+// 한 코드는 체력 1
+// const hero2 = new Hero("코딩킹",1)
+// 한 코드는 체력 30(동일)
+// const hero2 = new Hero("코딩킹",30)
+// compare 테스트 hero1, hero2
+// 사용 예: Hero.compare(전사1, 전사2)
+Hero.compare(hero1, hero2)
