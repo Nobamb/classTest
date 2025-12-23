@@ -92,11 +92,6 @@ const warrior = new Warrior("워리어", 100, 19);
 // warrior 생성확인 테스트
 console.log(warrior);
 
-// 공격 테스트
-warrior.attack();
-// 에너지 고갈 확인 테스트
-warrior.attack();
-
 // 👹 Chapter 3. 상호작용 (실전 전투)
 // Q6. [몬스터 출현] Monster 클래스 만들기
 // 샌드백이 필요합니다. Monster 클래스를 만드세요.
@@ -107,7 +102,7 @@ class Monster {
     this.name = name;
     this.hp = hp;
   }
-
+  
   // 메서드: takeDamage(damage)
   // 이 메서드는 데미지를 받으면 자신의 hp를 깎고, "[몬스터이름]이 [데미지] 피해를 입었습니다. (남은 체력: [hp])"를 출력합니다.
   takeDamage(damage) {
@@ -123,10 +118,13 @@ const monster = new Monster("몬스터", 100)
 
 // 테스트 
 console.log(monster)
-// 몬스터 takedamage 실행
-monster.takeDamage(10)
 
-
+// hero 공격 테스트
+hero.attack(monster);
+// warrior 공격 테스트
+warrior.attack(monster);
+// warrior 에너지 고갈 확인 테스트
+warrior.attack(monster);
 
 // 🛡️ Chapter 4. 캡슐화와 고급 기능 (마스터 과정)
 // Q8. [안전장치] Getter와 Setter
